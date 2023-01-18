@@ -43,6 +43,7 @@ async function main() {
   const _btcData = await btcData.deploy(_feed.address)
 
   await _btcData.deployed();
+  console.log("ContractA ",_btcData.address)
 
   console.log(await _btcData.dataPriceBTC())
   console.log(await _btcData.dataPriceETH())
@@ -59,3 +60,4 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+// 9240
