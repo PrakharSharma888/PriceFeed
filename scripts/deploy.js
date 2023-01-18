@@ -1,17 +1,15 @@
 const hre = require("hardhat");
-const { BigNumber } = require('ethers')
 const CoinGecko = require('coingecko-api');
 
 async function main() {
     const axios = require("axios");
 
-    const BTCurl = 'https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD';
+    const BTCurl = 'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD';
 
 
     const response = await axios.get(BTCurl)
     
-    const bitPrice = response.data.USD
-    const bitPrice1 = BigNumber.from(bitPrice)
+    const bitPrice = response.data.USD.toString()
 
   const feed = await hre.ethers.getContractFactory("ContractB");
   const _feed = await feed.deploy();
@@ -19,8 +17,8 @@ async function main() {
   await _feed.deployed();
 
   console.log("Address :",_feed.address);
-    console.log("Price: ",bitPrice1)
-  await _feed.fetch(bitPrice1)
+  console.log("Price: ",bitPrice)
+  await _feed.fetch(bitPrice)
 
   const btcData = await hre.ethers.getContractFactory("MainC");
   const _btcData = await btcData.deploy(_feed.address)

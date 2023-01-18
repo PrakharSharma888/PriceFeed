@@ -2,11 +2,11 @@
 pragma solidity ^0.8.9;
 
 contract ContractB {
-    uint256 public btcPrice;
-    function fetch(uint256 btc) public{
+    string public btcPrice;
+    function fetch(string memory btc) public{
         btcPrice = btc;
     }
-    function provide() view public returns(uint){
+    function provide() view public returns(string memory){
         return btcPrice;
     }
 }

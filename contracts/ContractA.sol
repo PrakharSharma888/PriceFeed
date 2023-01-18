@@ -11,8 +11,8 @@ contract MainC{
         _contractB = ContractB(_addB);
     }
 
-    function dataPrice() view public returns(uint){
-        uint256 price = _contractB.provide();
+    function dataPrice() view public returns(string memory){
+        string memory price = _contractB.provide();
         return price;
     }
 }
